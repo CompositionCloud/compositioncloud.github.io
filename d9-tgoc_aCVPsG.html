@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>d9-tgoc_aCVPsG</title>
+</head>
+<body style="background-color:black;">
+<center>
+<h1><button id="title" style="font-family:Times New Roman; font-size:1em;background-color:black; color:lightgrey; border:none; outline:none; cursor:pointer;" onclick="window.open('https://ccloudblog.com/2016/08/04/d9-tgoc_acvpsg/','_blank');">d9-tgoc_aCVPsG</button></h1>
+<h4 id="subtitle" style="font-family:Times New Roman; font-size:1em; color:grey;">diagrams9 - the_gesture_of_creation; audioControlledVideoPlayer and simpleGranulator</h4>
+<div oncontextmenu="return false" onselectstart="return false" ondragstart="return false" style="display:table-cell; vertical-align:middle; horizontal-align:middle">
+<video id="Video">
+<source src="https://ccloudblog.files.wordpress.com/2016/07/d9-tgoc.mp4" type="video/mp4">
+Your browser does not support HTML5 video. 
+</video>
+</div>
+</center>
+<script type="text/javascript">
+// setting up the video
+var v = document.getElementById('Video');
+if ((window.innerWidth/window.innerHeight)>=1.777777) {
+	v.height = window.innerHeight * 0.75;
+}
+else {
+	v.width = window.innerWidth * 0.75;
+}
+// asking for permission to use the microphone
+navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+if (navigator.getUserMedia) {
+	// adding a tooltip to the title
+	var title = document.getElementById("title");
+	title.datatoggle="tooltip";
+	title.title="Click for more information";
+	// checking if permission to use the microphone was given
+	navigator.getUserMedia({audio:true},
+			function(stream) {
+   		// alerting the user
+   		alert('IMPORTANT! Before proceeding set the volume to a low level. Click OK and raise it slowly and carefully to avoid too much feedback. Click on the title for more information.')
+		// video-related variables
+    	var altDir = 0; // this variable is used for alternating between the 2 symmetrical directions in the video
+		var prsp = Math.floor(Math.random()*8)+1; // this variable is used for setting the perspective
+		var FRAME_RANGE = [8, 9, 8, 8, 8, 9, 8, 8, 10]; // the frame range of each perspective (in one direction)
+		var FRAME_RANGE_MAX = [17, 44, 65, 90, 117, 144, 165, 192, 221]; // the frame range of perspectives 2, 3 and 6 had to be corrected ....
+		var frame; // the frame to be shown
+    	// narrative-related variables
+    	var hold = true; // this variable is used for holding a paradigm or a withdrawal for the minimum period of time
+		var holdClock = 0; // this variable is compared with the minimum period of holding a paradigm or a withdrawal to determine if hold is true or false
+		var repetition = false; // this variable is used for avoiding the repetition of the same progress
+		var changeTime = 0; // this variable is used for setting when a breakthrough is about to happen
+		var changeClock = 0; // this variable is compared with changeTime if a breakthrough is about to happen
+		var change = false // this variable is true if a breakthrough is about to happen
+		var endBlackScreenTime = 0; // this variable is used for setting when a withdrawal is about to end
+		var endBlackScreenClock = 0; // this variable is compared with endBlackScreenTime if a withdrawal is about to end
+		var endBlackScreen = false; // this variable is true if a withdrawal is about to end
+		var endBlackScreenEarly = false; // this variable is true if a withdrawal is ended sooner than expected
+		// audio variables
+		var context = new (window.AudioContext || window.webkitAudioContext)();
+		var source = context.createMediaStreamSource(stream);
+		var analyser = context.createAnalyser();
+    	var input = context.createScriptProcessor(4096, 1, 1);
+    	var buffer = context.createBuffer(2, context.sampleRate*2, context.sampleRate);
+    	var PLAYBACK_RATE = [0, 1/1.08, 1/1.14, 1/0.12, 1/5.2, 1/1.6, 1/3.6, 1/0.05, 1/0.09];
+    	var offset = 0;
+    	var limit = 0.707946; // this variable is used for limiting the peak value of the input
+    	// setting up the audio and analysing the input
+		source.connect(analyser);
+    	analyser.smoothingTimeConstant = 1;
+    	analyser.fftSize = input.bufferSize;
+    	input.connect(context.destination);
+    	analyser.connect(input);
+    	// the following function is called every [input.bufferSize / context.sampleRate * 1000] ms
+    	input.onaudioprocess = function(e) {
+        	// updating the clocks
+        	holdClock += input.bufferSize / context.sampleRate * 1000;
+        	changeClock += input.bufferSize / context.sampleRate * 1000;
+        	endBlackScreenClock += input.bufferSize / context.sampleRate * 1000;
+    		// setting the limit
+        	if (prsp != 0 && holdClock <= 1000 && endBlackScreenEarly == true) {
+        		limit = (1000 - holdClock) / 1000 * 18 + 0.707946;
+        	}
+        	else {
+        		limit = 0.707946;
+        		endBlackScreenEarly = false;
+        	}
+    		// calulating the rms and peak values of the input
+    		var inputArray = new Float32Array(input.bufferSize);
+			var rms = 0.5;
+			var peak = 0.000001;
+    		analyser.getFloatTimeDomainData(inputArray);
+    		for(var i = 0; i < input.bufferSize; i++) {
+    			rms += Math.pow(inputArray[i], 2);
+    		    if (Math.abs(inputArray[i]) > peak) {
+    		   		peak = Math.abs(inputArray[i]);
+    		  	}
+    		}
+    		rms /= input.bufferSize;
+    		rms = Math.pow(rms, 0.5);
+    		peak = Math.min(peak, limit);
+    		peak /= limit;
+    		// recording the microphone
+    		if ((offset + input.bufferSize) < (context.sampleRate*2)) {
+    		    offset += input.bufferSize;
+    		}
+    		else {
+    		   offset = 0;
+    		}
+        	buffer.copyToChannel(e.inputBuffer.getChannelData(0), 0, offset);
+        	buffer.copyToChannel(e.inputBuffer.getChannelData(0), 1, offset);
+        	// the audio controlled video player and the simple granulator
+        	var granulator = context.createBufferSource();
+        	if (rms >= 0.000032) {
+        	   	// audio controlled video player		
+        	   	altDir = 1 - altDir;
+        	   	frame = Math.max(Math.min(Math.round(
+           			peak * FRAME_RANGE[prsp] * (altDir*2-1) + 25 * prsp + FRAME_RANGE[prsp] + altDir), FRAME_RANGE_MAX[prsp]), prsp * 25);
+           		v.currentTime = frame/25;
+           		// simple granulator
+           		if (prsp != 0) {
+           	    	granulator.buffer = buffer;
+        			granulator.connect(context.destination);
+            	   	granulator.playbackRate.value = PLAYBACK_RATE[prsp];
+            	   	granulator.start(context.currentTime, Math.random()*2, input.bufferSize/context.sampleRate*PLAYBACK_RATE[prsp]);
+            	}
+        	}
+        	// THE NARRATIVE
+        	// setting hold to false after a minimum period of time: 5 seconds for a paradigm and 1 second for a withdrawal
+        	if ((prsp != 0 && holdClock >= 5000) || (prsp == 0 && holdClock >= 1000)) {
+        		hold = false;
+        	}
+        	// holding a paradigm or a withdrawal for a minimum period of time
+        	if (hold == false) {
+        		// checking if progress was made
+        		if ((frame>=25 && frame<=26) || (frame>=43 && frame<=44) || (frame>=50 && frame<=51) || (frame>=65 && frame<=66) ||
+        	    		(frame>=75 && frame<=76) || (frame>=89 && frame<=90) || (frame>=100 && frame<=101) || (frame>=116 && frame<=117) ||
+        	    		(frame>=125 && frame<=126) || (frame>=143 && frame<=144) || (frame>=150 && frame<=151) || (frame>=164 && frame<=165) ||
+        	    		(frame>=175 && frame<=176) || (frame>=190 && frame<=192) || (frame>=200 && frame<=201) || (frame>=219 && frame<=221)) {
+        			// avoiding the repetition of the same progress
+        			if (repetition == false) {
+        				repetition = true;
+        				// a progress has 1/3 chance of leading to a breakthrough
+            			if (Math.floor(Math.random()*3) == 2) { 
+            				changeClock = 0;
+            				changeTime = Math.random()*4900 + 100;
+            				change = true;
+            			}
+        			}
+        			return;
+        		}
+        		// ending a withdrawal sooner than expected
+        		else if ((frame>=0 && frame<=1) || (frame>=16 && frame<=17)) {
+    				holdClock = 0;
+    				hold = true;
+    				endBlackScreen = false;
+    				endBlackScreenEarly = true;
+    				var prspArray = [1,2,3,4,5,6,7,8];
+    				prspArray.splice(lastPrsp - 1, 1);
+    				prsp = prspArray[Math.floor(Math.random()*7)];
+   					return;
+       			}
+        		else {
+        			repetition = false;
+        		}
+        	}
+        	// a breakthrough is about to happen
+        	if (change == true && changeClock >= changeTime) {
+        		// a breakthrough has 1/3 chance of leading to a withdrawal and 2/3 chance of leading to a paradigm shift
+        		if (Math.floor(Math.random()*3) == 2) {
+        			lastPrsp = prsp;
+        			prsp = 0;
+        			endBlackScreenClock = 0;
+        			endBlackScreenTime = Math.random()*27000 + 3000;
+        			endBlackScreen = true;
+        			granulator.disconnect();
+        		}
+        		else {
+    				var prspArray = [1,2,3,4,5,6,7,8];
+    				prspArray.splice(prsp - 1, 1);
+    				prsp = prspArray[Math.floor(Math.random()*7)];
+        		}
+        		holdClock = 0;
+        		hold = true;
+    			change = false;
+				return;
+        	}
+        	// a withdrawal is about to end
+        	if (endBlackScreen == true && endBlackScreenClock >= endBlackScreenTime) {
+        		holdClock = 0;
+				hold = true;
+				endBlackScreen = false;
+				var prspArray = [1,2,3,4,5,6,7,8];
+				prspArray.splice(lastPrsp - 1, 1);
+				prsp = prspArray[Math.floor(Math.random()*7)];
+				return;
+        	}
+    	}
+	},
+	// alerting in case of errors
+	function(err) {
+		alert('Please allow d9-tgoc_aCVPsG to use your microphone. Click on the title for more information.');
+	});
+}
+else {
+	alert('Unfortunately getUserMedia is not supported in this browser.');
+	var title = document.getElementById("title");
+	var subtitle = document.getElementById("subtitle");
+	title.innerHTML = "click here for more information";
+	subtitle.innerHTML = " ";
+}
+</script>
+</body>
+</html>
