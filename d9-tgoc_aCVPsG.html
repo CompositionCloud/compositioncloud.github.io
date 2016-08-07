@@ -38,7 +38,7 @@ if (navigator.getUserMedia) {
    		alert('IMPORTANT! Before proceeding set the volume to a low level. Click OK, make some sounds, and raise the volume slowly and carefully to avoid too much feedback. Click on the title for more information.')
 		// video-related variables
     	var altDir = 0; // this variable is used for alternating between the 2 symmetrical directions in the video
-		var prsp = Math.floor(Math.random()*8)+1; // this variable is used for setting the perspective
+		var prsp = Math.floor(Math.random()*7)+1; // this variable is used for setting the perspective
 		var FRAME_RANGE = [8, 9, 8, 8, 8, 9, 8, 8, 10]; // the frame range of each perspective (in one direction)
 		var FRAME_RANGE_MAX = [17, 44, 65, 90, 117, 144, 165, 192, 221]; // the frame range of perspectives 2, 3 and 6 had to be corrected ....
 		var frame; // the frame to be shown
@@ -152,9 +152,9 @@ if (navigator.getUserMedia) {
     				hold = true;
     				endBlackScreen = false;
     				endBlackScreenEarly = true;
-    				var prspArray = [1,2,3,4,5,6,7,8];
+    				var prspArray = [1,2,3,4,5,6,7];
     				prspArray.splice(lastPrsp - 1, 1);
-    				prsp = prspArray[Math.floor(Math.random()*7)];
+    				prsp = prspArray[Math.floor(Math.random()*6)];
    					return;
        			}
         		else {
@@ -173,9 +173,9 @@ if (navigator.getUserMedia) {
         			granulator.disconnect();
         		}
         		else {
-    				var prspArray = [1,2,3,4,5,6,7,8];
+    				var prspArray = [1,2,3,4,5,6,7];
     				prspArray.splice(prsp - 1, 1);
-    				prsp = prspArray[Math.floor(Math.random()*7)];
+    				prsp = prspArray[Math.floor(Math.random()*6)];
         		}
         		holdClock = 0;
         		hold = true;
@@ -187,9 +187,9 @@ if (navigator.getUserMedia) {
         		holdClock = 0;
 				hold = true;
 				endBlackScreen = false;
-				var prspArray = [1,2,3,4,5,6,7,8];
+				var prspArray = [1,2,3,4,5,6,7];
 				prspArray.splice(lastPrsp - 1, 1);
-				prsp = prspArray[Math.floor(Math.random()*7)];
+				prsp = prspArray[Math.floor(Math.random()*6)];
 				return;
         	}
     	}
