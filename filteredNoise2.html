@@ -108,7 +108,6 @@ if (!window.mobileAndTabletcheck()) {
 	var ctx = c.getContext("2d");
 	var Y = new Array (5); Y[0] = height; Y[1] = Math.random()*height*0.689276749+30;
 	var old_time = -0.1;
-	var id = ctx.createImageData(1,1);
 	ctx.canvas.width = width;
 	ctx.canvas.height = height;
 	window.requestAnimationFrame(draw);
