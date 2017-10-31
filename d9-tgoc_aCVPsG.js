@@ -11,7 +11,7 @@ window.onload = function onload() {
     let main_canvas;
     let main_canvas_context;
     
-    document.body.innerHTML = "<div style='text-align: center; color: white'>" +
+    document.body.innerHTML = "<div style='text-align: center; color: grey'>" +
             "Loading. Please wait." +
             "</div>";
     
