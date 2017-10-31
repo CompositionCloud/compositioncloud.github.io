@@ -10,9 +10,19 @@ window.onload = function onload() {
     let d9_tgoc_canvas_context;
     let main_canvas;
     let main_canvas_context;
-
+    
+    document.body.innerHTML = "<div style='text-align: center; color: white'>" +
+            "Loading. Please wait." +
+            "</div>";
+    
     function main() {
-        function initCanvas() {
+        document.body.innerHTML = "<div style='text-align: center'>" +
+                "<button id='title' style='background-color: black; border: none; outline: none; user-select: none;'>d9-    tgoc_aCVPsG</button>" +
+                "<span id='subtitle' style='user-select: none;'><br>diagrams9 - the_gesture_of_creation; audioControlledVideoPlayer and simpleGranulator<br><br></span>" +
+                "<canvas id='canvas' style='user-select: none;'></canvas>" +
+                "</div>";
+        
+        function initCanvas() { 
             let title = document.getElementById("title");
             let subtitle = document.getElementById("subtitle");
 
