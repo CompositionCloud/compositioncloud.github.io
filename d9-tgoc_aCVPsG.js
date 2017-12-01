@@ -17,8 +17,8 @@ window.onload = function onload() {
     
     function main() {
         document.body.innerHTML = "<div style='text-align: center'>" +
-                "<button id='title' style='background-color: black; border: none; outline: none; user-select: none;'>d9-    tgoc_aCVPsG</button>" +
-                "<span id='subtitle' style='user-select: none;'><br>diagrams9 - the_gesture_of_creation; audioControlledVideoPlayer and simpleGranulator<br><br></span>" +
+                "<button id='title' style='background-color: black; border: none; outline: none; user-select: none;'>d9-tgoc_aCVPsG</button>" +
+                "<span id='subtitle' style='user-select: none;'><br>diagrams9 - the_gesture_of_creation [processed by] audioControlledVideoPlayer [and] simpleGranulator<br><br></span>" +
                 "<canvas id='canvas' style='user-select: none;'></canvas>" +
                 "</div>";
         
@@ -58,7 +58,7 @@ window.onload = function onload() {
 
             window.onresize = initCanvas;
 
-            window.alert("IMPORTANT! Before proceeding set the volume to a low level. Click OK, make some sounds, and raise the volume slowly and carefully to avoid too much feedback (do not use headphones). Click on the title for more information.");
+            window.alert("IMPORTANT! Before proceeding set the volume to a low level. Click \"OK\", make some sounds, and raise the volume slowly and carefully to avoid too much feedback (do not use headphones). Click on the title for more information.");
 
 
             // audio
