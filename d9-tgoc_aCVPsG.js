@@ -18,7 +18,7 @@ window.onload = function onload() {
     function main() {
         document.body.innerHTML = "<div style='text-align: center'>" +
                 "<button id='title' style='background-color: black; border: none; outline: none; user-select: none;'>d9-tgoc_aCVPsG</button>" +
-                "<span id='subtitle' style='user-select: none;'><br>diagrams9 - the_gesture_of_creation [processed by] audioControlledVideoPlayer [and] simpleGranulator<br><br></span>" +
+                "<span id='subtitle' style='user-select: none;'><br>diagrams9 - the_gesture_of_creation; audioControlledVideoPlayer and simpleGranulator<br><br></span>" +
                 "<canvas id='canvas' style='user-select: none;'></canvas>" +
                 "</div>";
         
