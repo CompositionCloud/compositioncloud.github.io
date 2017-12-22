@@ -1,0 +1,35 @@
+body {
+    overflow: hidden;
+    background-color: black;
+    margin: 0px;
+    user-select: none;
+}
+
+.loading {
+    text-align: center;
+    margin: 8px;
+    color: grey;
+}
+
+.center {
+    text-align: center;
+}
+
+.title-black {
+    background-color: black;
+    border: none;
+    outline: none;
+}
+
+.title {
+    background-color: black;
+    color: lightgray;
+    font-family: times;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.subtitle {
+    color: gray;
+}
