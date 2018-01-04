@@ -261,10 +261,10 @@ function ccl1Data(score, image) {
     // tM12sk3
     if (score === 5) {
         audio = [
-            new Audio("ccloudlab1-2/audio/tpc-MBP12-slpAwkup-key-3_1.mp3"),
-            new Audio("ccloudlab1-2/audio/tpc-MBP12-slpAwkup-key-3_2.mp3"),
-            new Audio("ccloudlab1-2/audio/tpc-MBP12-slpAwkup-key-3_3.mp3"),
-            new Audio("ccloudlab1-2/audio/tpc-MBP12-slpAwkup-key-3_4.mp3")
+            new Audio("ccloudlab1-2/audio/tpc-MBP12-put_to_sleep_and_woken_up-key_3_1.mp3"),
+            new Audio("ccloudlab1-2/audio/tpc-MBP12-put_to_sleep_and_woken_up-key_3_2.mp3"),
+            new Audio("ccloudlab1-2/audio/tpc-MBP12-put_to_sleep_and_woken_up-key_3_3.mp3"),
+            new Audio("ccloudlab1-2/audio/tpc-MBP12-put_to_sleep_and_woken_up-key_3_4.mp3")
         ];
         
         audio.forEach(function loopAudio(item) {
