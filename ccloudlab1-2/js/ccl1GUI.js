@@ -14,7 +14,7 @@ function ccl1GUI() {
                     "2. polygon1v1" + "\n" +
                     "3. iS1iS2_x1iS6iS5" + "\n" +
                     "4. iS1iS2iS3" + "\n" +
-                    "5. tM12sk33",
+                    "5. tM12sk3",
             "1. pencil2" + "\n" +
                     "2. type1v1" + "\n" +
                     "3. iS1iS2v1" + "\n" +
