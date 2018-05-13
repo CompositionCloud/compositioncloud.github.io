@@ -163,7 +163,7 @@ function singlePerformer() {
         }
     }
     
-    aux.loadMedia(1, 20, "static/", true, function init() {
+    aux.loadMedia(1, 20, "ccloudlab1-2/", true, function init() {
         GUI.clear();
         
         window.alert("Use a USB triple foot switch or 1, 2, and 3 on the keyboard to interact with the scores.");
