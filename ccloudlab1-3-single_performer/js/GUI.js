@@ -394,7 +394,7 @@ const GUI = (function GUI_() {
                 } else {
                     const next_event = "next_event_" + performer.next_event_index;
                     
-                    const next = "<span style='font-size: " + (large_font_size * 1.1) + "px'><b>NEXT</b></span><br><br>";
+                    const next = "<span style='font-size: " + large_font_size + "px'><b>NEXT</b></span><br><br>";
                     
                     if (scores[performer.current_event.score].annotations.type !== "fixed" || performer[next_event].score !== performer.current_event.score) {
                         annotation2 = next + formatLoudness(next_event) + previewAnnotation(next_event);
