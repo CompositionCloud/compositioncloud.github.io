@@ -1041,7 +1041,7 @@ scores.push(function iS3x2() {
                 "between trackpad and hard drive",                          // 10
                 "noisy rustles",                                            // 11
                 "very short radio sound",                                   // 12
-                "noisy rustles (/), short electric hum sound (*)",          // 13
+                "noisy rustles (/), short electric hum sounds (*)",         // 13
                 "opening and closing programs",                             // 14
                 "noisy rustles (/), short electric hum sounds (*)",         // 15
                 "key 3",                                                    // 16
@@ -1078,7 +1078,7 @@ scores.push(function diagram3x1() {
         background: "black",
         dim: {width: 2825, height: 1875},
         cursor: 200,
-        speed: 25,
+        speed: 15,
         annotations: {
             type: "fixed",
             text: "<br>[white background]<br>noise, low LPF res<br><br>[black lines]<br>noise, low LPF cutoff, maximum LPF res<br><br>[purple lines]<br>noise, mid LPF cutoff, maximum LPF res<br><br>[red lines]<br>noise, high LPF cutoff, maximum LPF res<br><br>[green lines]<br>sine waves<br><br>[green lines, black fill]<br>rattling coins"
