@@ -683,7 +683,7 @@ scores.push(function pencil2() {
             }
         },
         link: function link(from, pause) {
-            if (from === 2) {
+            if (from === 1) {
                 return [{
                     next_event_index: 2,
                     next_event: {
@@ -693,7 +693,7 @@ scores.push(function pencil2() {
                 }];
             }
             
-            if (from === 6) {
+            if (from === 3) {
                 return [{
                     next_event_index: 2,
                     next_event: {
@@ -1620,7 +1620,7 @@ scores.push(function iS3x2() {
                 "between trackpad and hard drive",                          // 10
                 "noisy rustles",                                            // 11
                 "very short radio sound",                                   // 12
-                "noisy rustles (/), short electric hum sound (*)",          // 13
+                "noisy rustles (/), short electric hum sounds (*)",         // 13
                 "opening and closing programs",                             // 14
                 "noisy rustles (/), short electric hum sounds (*)",         // 15
                 "key 3",                                                    // 16
@@ -2066,7 +2066,7 @@ scores.push(function iS5() {
                 "sine waves, full modulation of freq shift, very fast to maximum rLFO rate, low to medium rLFO glide, complex beating patterns",
                 "rattling, abrupt silence",
                 "rattling aluminum foil",
-                "complex texture of the rattling aluminum foil"
+                "complex texture of the rattling aluminum foil, occasionally louder"
             ]
         },
         link: function link(from, pause) {
