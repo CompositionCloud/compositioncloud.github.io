@@ -294,7 +294,7 @@ scores.push(function iS1iS2_x1iS6iS5() {
                 "percussive sounds",                                                                    // 4
                 "long air sounds, with mouthpiece (into and a bit away from mouthpiece) and without mouthpiece (a bit away from mouthpiece) (no whistles), incorporating flutter-tongue and trills, and shaking tube",  // 5
                 "interrupt with pauses, several accents in the end",                                    // 6
-                "fast incomprehensible speaking into mouthpiece/tube",                                  // 7
+                "fast, incomprehensible speaking into mouthpiece/tube",                                 // 7
                 "percussive sounds, more and more active",                                              // 8
                 "long high tones, slightly fluctuating in pitch",                                       // 9
                 "percussive sounds",                                                                    // 10
