@@ -402,7 +402,7 @@ const GUI = (function GUI_() {
                         if (performer.current_event.score === 12 && performer[next_event].score === performer.current_event.score && performer[next_event].part < 11) { // pen1v1v1v1x1x2pencil1
                             annotation2 = next + "sim.";
                         }
-                    } else if (scores[performer.current_event.score].annotations.type === "fixed" && performer.next_event_index) { // polygon1v1
+                    } else if (performer.current_event.score === 2) { // polygon1v1
                         annotation2 = next + formatLoudness(next_event) + "sim.";
                     } else {
                         annotation2 = "";
