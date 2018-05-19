@@ -46,10 +46,20 @@ function main() {
         
     function interact(e) {
         if (e.keyCode >= 49 && e.keyCode <= 51) {
-            if (performer.state === "ready") {
+            if (performer.state === "ready" || performer.state === "pause") {
                 performer.state = "playing";
             } else if (performer.state === "playing") {
                 score_types[scores[performer.current_event.score].type].interact(performer, e.keyCode - 48);
+            }
+        }
+        
+        if (e.keyCode === 83 && (scores[performer.current_event.score].type === "scroll_loop" || scores[performer.current_event.score].type === "scroll_mod" || scores[performer.current_event.score].type === "scroll_map")) {
+            performer.state = "pause";
+            
+            let speed = parseFloat(window.prompt("*** CHANGE THE SCROLLING SPEED ***", performer.speed));
+            
+            if (speed > 0) {
+                performer.speed = speed;
             }
         }
     }
@@ -118,6 +128,7 @@ function main() {
 
             performer.clock = {master: 0, delta: 0, t0: 0};
             performer.state = "ready";
+            performer.speed = 1;
 
             GUI.init();
 
