@@ -280,7 +280,7 @@ score_types.scroll_loop = (function scrollLoop() {
     }
     
     function updateCurrentEvent(performer) {
-        performer.current_event.x += performer.clock.delta * scores[performer.current_event.score].speed[performer.current_event.part] * performer.current_event.direction;
+        performer.current_event.x += performer.clock.delta * scores[performer.current_event.score].speed[performer.current_event.part] * performer.speed * performer.current_event.direction;
     }
     
     function interact(performer, key) {
@@ -425,7 +425,7 @@ score_types.scroll_mod = (function scrollMod() {
     
     function updateCurrentEvent(performer) {
         if (performer.current_event.part < 11) {
-            performer.current_event.x += performer.clock.delta * scores[performer.current_event.score].speed;
+            performer.current_event.x += performer.clock.delta * scores[performer.current_event.score].speed * performer.speed;
             
             if (performer.current_event.x >= scores[performer.current_event.score].widths[performer.current_event.part][Math.floor(performer.current_event.orientation / 2)]) {
                 const part = performer.current_event.part * 2 + performer.current_event.direction;
@@ -680,7 +680,7 @@ score_types.scroll_map = (function scrollMap() {
     function updateCurrentEvent(performer) {
         let xy = ["x", "y"];
 
-        performer.current_event[xy[performer.current_event.direction % 2]] += performer.clock.delta * scores[performer.current_event.score].speed * (Math.floor(performer.current_event.direction / 2) * -2 + 1);
+        performer.current_event[xy[performer.current_event.direction % 2]] += performer.clock.delta * scores[performer.current_event.score].speed * performer.speed * (Math.floor(performer.current_event.direction / 2) * -2 + 1);
         
         performer.current_event.x = Math.min(Math.max(performer.current_event.x, 0), scores[performer.current_event.score].image.width - scores[performer.current_event.score].cursor);
         performer.current_event.y = Math.min(Math.max(performer.current_event.y, 0), scores[performer.current_event.score].image.height - scores[performer.current_event.score].cursor);
