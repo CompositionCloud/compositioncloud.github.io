@@ -1081,7 +1081,7 @@ scores.push(function diagram3x1() {
         speed: 15,
         annotations: {
             type: "fixed",
-            text: "<br>[white background]<br>noise, low LPF res<br><br>[black lines]<br>noise, low LPF cutoff, maximum LPF res<br><br>[purple lines]<br>noise, mid LPF cutoff, maximum LPF res<br><br>[red lines]<br>noise, high LPF cutoff, maximum LPF res<br><br>[green lines]<br>sine waves<br><br>[green lines, black fill]<br>rattling coins"
+            text: "<br>[white background]<br>noise, low LPF res<br><br>[black lines]<br>noise, low LPF cutoff, maximum LPF res<br><br>[purple lines]<br>noise, mid LPF cutoff, maximum LPF res<br><br>[red lines]<br>noise, high LPF cutoff, maximum LPF res<br><br>[green lines]<br>sine waves<br><br>[green lines and black fill]<br>rattling coins"
         }
     };
 }());
