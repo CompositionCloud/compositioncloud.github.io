@@ -49,12 +49,18 @@ scores.push(function diagram10_2v1() {
             [1, 2, 3, 4]    // 2
         ],
         annotations: {
-            type: "array",
+            type: "fixed",
             text: [
-                "percussive sounds",
-                "percussive sounds and low tones",
-                "percussive sounds and air sounds"
-            ]
+                "<br>[dots]<br>percussive sounds<br><br>[white background]<br>silence<br><br>[brown background]<br>low tones<br><br>[gray background]<br>air sounds"
+            ],
+            preview: {
+                type: "array",
+                text: [
+                    "percussive sounds",
+                    "percussive sounds and low tones",
+                    "percussive sounds and air sounds"
+                ]
+            }
         },
         link: function link(from, pause) {
             if (from === 0) {
@@ -1203,7 +1209,7 @@ scores.push(function pen1v1v1v1x1x2pencil1() {
     
     const annotations = [
         "FM noise, disturbances",
-        "FM noise, disturbances, rapid movement of tuning wheel",
+        "FM noise, disturbances, rapid movements of tuning wheel",
         "FM, moving tuning wheel",
         "FM, very intense disturbances",
         "AM noise, disturbances"
@@ -1424,7 +1430,7 @@ scores.push(function pen1v1v1v1x1x2pencil1() {
             type: "function",
             text: function generateAnnotation(part) {
                 if (part < 11) {
-                    return "[white background]<br>FM noise<br><br>[black lines]<br>disturbances<br><br>[straight thick vertical lines]<br>rapid movement of tuning wheel";
+                    return "disturbances<br><br>[white background]<br>FM noise<br><br>[straight thick vertical lines]<br>rapid movements of tuning wheel";
                 }
                                 
                 return annotations[part - 9];

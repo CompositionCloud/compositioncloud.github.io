@@ -163,7 +163,7 @@ function singlePerformer() {
         }
     }
     
-    aux.loadMedia(1, 20, "ccloudlab1-2/", true, function init() {
+    aux.loadMedia(1, 20, "static/", true, function init() {
         GUI.clear();
         
         setTimeout(function waitForBrowser() {

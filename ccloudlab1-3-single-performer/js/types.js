@@ -927,6 +927,8 @@ score_types.pause = (function pause() {
                 if (performer.dynamic_link && performer.dynamic_link !== "[]") {
                     performer.next_event_2 = Object.assign({}, performer.dynamic_link);
 
+                    random_sequence.splice(random_sequence.indexOf((performer.dynamic_link.score - 1) % 5), 1);
+                    
                     randomEvent(1);
                     randomEvent(3);
 

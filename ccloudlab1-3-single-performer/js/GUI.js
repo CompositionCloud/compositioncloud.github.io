@@ -296,6 +296,7 @@ const GUI = (function GUI_() {
             }
             
             function previewAnnotation(event) {
+                
                 if (scores[performer[event].score].annotations.type !== "array") {
                     if (scores[performer[event].score].annotations.preview.type === "fixed") {
                         return scores[performer[event].score].annotations.preview.text;
@@ -303,6 +304,10 @@ const GUI = (function GUI_() {
 
                     if (scores[performer[event].score].annotations.preview.type === "function") {
                         return scores[performer[event].score].annotations.preview.text(performer[event].part);
+                    }
+                    
+                    if (scores[performer[event].score].annotations.preview.type === "array") {
+                        return scores[performer[event].score].annotations.preview.text[performer[event].part];
                     }
                 } else {
                     return scores[performer[event].score].annotations.text[performer[event].part];
@@ -342,9 +347,16 @@ const GUI = (function GUI_() {
             } else {
                 elements.screens[index].annotation1.classList = "current-event";
                 elements.screens[index].annotation2.classList = "next-event";
+                elements.screens[index].annotation3.classList = "next-event";
                                 
                 if (scores[performer.current_event.score].annotations.type === "fixed") {
                     annotation1 = formatLoudness("current_event", index) + scores[performer.current_event.score].annotations.text;
+                    
+                    if (performer.current_event.score === 11) { // diagram9-8
+                        if (performer.current_event.part > 0) {
+                            annotation3 += "<u>left foot switch</u><br>" + formatLoudness(-1) + "<br>";
+                        }
+                    }
                 }
                 
                 if (scores[performer.current_event.score].annotations.type === "function") {
@@ -355,6 +367,12 @@ const GUI = (function GUI_() {
                     let annotation2_1 = "";
                     let annotation2_2 = "";
                     let annotation2_3 = "";
+                    
+                    if (performer.current_event.score === 11) { // diagram9-8
+                        if (performer.current_event.part < scores[11].parts.length - 1) {
+                            annotation2_3 += formatLoudness(1);
+                        }
+                    }
                     
                     if (performer.next_event_1 !== "[]") {
                         annotation2_1 = formatLoudness("next_event_1") + previewAnnotation("next_event_1");
@@ -391,6 +409,22 @@ const GUI = (function GUI_() {
                     if (annotation2_3 !== "") {
                         annotation2 += "<u>right foot switch</u><br>" + annotation2_3 + "<br><br>";
                     }
+                    
+                    if (performer.current_event.score === 11) { // diagram9-8
+                        annotation2 = "";
+                        
+                        if (annotation2_1 !== "") {
+                            annotation3 += "<u>left foot switch</u><br>" + annotation2_1 + "<br><br>";
+                        }
+
+                        if (annotation2_2 !== "") {
+                            annotation3 += "<u>middle foot switch</u><br>" + annotation2_2 + "<br><br>";
+                        }
+
+                        if (annotation2_3 !== "") {
+                            annotation3 += "<u>right foot switch</u><br>" + annotation2_3 + "<br><br>";
+                        }
+                    }
                 } else {
                     const next_event = "next_event_" + performer.next_event_index;
                     
@@ -400,14 +434,18 @@ const GUI = (function GUI_() {
                         annotation2 = next + formatLoudness(next_event) + previewAnnotation(next_event);
                         
                         if (performer.current_event.score === 12 && performer[next_event].score === performer.current_event.score && performer[next_event].part < 11) { // pen1v1v1v1x1x2pencil1
-                            annotation2 = next + "sim.";
+                            annotation2 = "";
                         }
                     } else if (performer.current_event.score === 2) { // polygon1v1
-                        annotation2 = next + formatLoudness(next_event) + "sim.";
+                        annotation2 = next + formatLoudness(next_event);
                     } else {
                         annotation2 = "";
                     }
                 }
+            }
+            
+            if (performer.current_event.score === 11) { // diagram9-8
+                annotation2 += "<br><br>";
             }
             
             elements.screens[index].annotation1.innerHTML = annotation1;
@@ -630,7 +668,7 @@ const GUI = (function GUI_() {
                 }
             }
         });
-        
+
         performers.forEach(function drawScore(performer, index) {
             updateClock(performer, index);
         });
