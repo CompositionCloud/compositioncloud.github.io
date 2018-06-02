@@ -20,9 +20,11 @@ scores.push(function diagram10_2v1() {
             22.5
         ],
         annotations: {
-            type: "fixed",
+            type: "array",
             text: [
-                "<br>[dots]<br>percussive sounds<br><br>[white background]<br>silence<br><br>[brown background]<br>low tones<br><br>[gray background]<br>air sounds"
+                "percussive sounds",
+                "percussive sounds and low tones",
+                "percussive sounds and air sounds"
             ]
         }
     };
