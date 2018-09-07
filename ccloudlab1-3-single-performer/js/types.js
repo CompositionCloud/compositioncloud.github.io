@@ -1,6 +1,6 @@
 /*global aux, scores*/
 
-/*jslint es6, node, for*/
+/*jslint es6, for*/
 
 const score_types = {};
 
@@ -995,14 +995,3 @@ score_types.pause = (function pause() {
         align: "center"
     };
 }());
-
-
-if (typeof exports !== "undefined") {
-    exports.score_types = score_types;
-    
-    const path = require("path");
-
-    scores = require(path.join(__dirname, "/scores.js")).scores;
-    aux = require(path.join(__dirname, "/aux.js")).aux;
-}
-
