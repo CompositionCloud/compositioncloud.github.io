@@ -1,6 +1,6 @@
 /*global window, scores, score_types*/
 
-/*jslint es6, for, node*/
+/*jslint es6, for*/
 
 const aux = (function aux_() {
     "use strict";
@@ -186,13 +186,3 @@ const aux = (function aux_() {
         chooseBeginning: chooseBeginning
     };
 }());
-
-if (typeof exports !== "undefined") {
-    exports.aux = aux;
-    
-    const path = require("path");
-    
-    scores = require(path.join(__dirname, "/scores.js")).scores;
-    score_types = require(path.join(__dirname, "/types.js")).score_types;
-
-}
