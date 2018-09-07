@@ -1,4 +1,4 @@
-/*jslint es6, node, for*/
+/*jslint es6, for*/
 
 const scores = [];
 
@@ -2140,7 +2140,3 @@ scores.push(function zr1tS() {
         }
     };
 }());
-
-if (typeof exports !== "undefined") {
-    exports.scores = scores;
-}
