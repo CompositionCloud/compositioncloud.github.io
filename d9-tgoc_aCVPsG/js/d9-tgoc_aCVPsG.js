@@ -208,7 +208,7 @@ window.onload = function onload() {
                 // holding a paradigm or a withdrawal for a minimum period of time
                 if (!hold) {
                     // checking if progress was made
-                    if (frame <= 1 || frame >= range[perspective - 1] - 2) {
+                    if (frame <= 1 || frame >= range[perspective - 1] * 2 - 2) {
                         // avoiding the repetition of the same progress
                         if (!repetition) {
                             repetition = true;
