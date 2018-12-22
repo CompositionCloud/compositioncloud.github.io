@@ -231,6 +231,8 @@ if (!window.mobileAndTabletcheck()) {
 		if(key.keyCode == 40) {
 			manualGain = Math.max(0.05, manualGain - 0.05);
 		}
+		// autoplay policy change
+		context.resume()
 	}
 	// allowing the user to change the gain using the mouse
 	var changeGain = false;
@@ -242,6 +244,8 @@ if (!window.mobileAndTabletcheck()) {
 			manualGain = 1-mouseY/height;
 			changeGain = true;
 		}
+		// autoplay policy change
+		context.resume()
 	}, false);
 	c.addEventListener('mousemove', function(e) {
 		var rect = c.getBoundingClientRect();
@@ -250,6 +254,8 @@ if (!window.mobileAndTabletcheck()) {
 		if(e.buttons==1 && changeGain == true) {
 			manualGain = 1-mouseY/height;
 		}
+		// autoplay policy change
+		context.resume()
 	}, false);
 	c.addEventListener('mouseup', function(e) {
 		changeGain = false;
